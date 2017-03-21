@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<title>Basics</title>
 </head>
+
 <body>
 
 	<!-- BOOTSTRAP Things -->
@@ -14,7 +16,7 @@
 			<div class="col-md-12">
 
 				<!-- RIOT STUFF STARTS HERE -->
-				<!-- <todo-app></todo-app> -->
+				<todo-app></todo-app>
 				<example></example>
 
 			</div>
@@ -25,6 +27,18 @@
 	<script src="tags/todo-item.tag" type="riot/tag"></script>
 	<script src="tags/example.tag" type="riot/tag"></script>
 
+	<script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+	<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyB794C7N4Sjv9qEkkko_LR_0ZTCA0ef38w",
+    authDomain: "to-do-666a0.firebaseapp.com",
+    databaseURL: "https://to-do-666a0.firebaseio.com",
+    storageBucket: "to-do-666a0.appspot.com",
+    messagingSenderId: "795909346355"
+  };
+  firebase.initializeApp(config);
+</script>
 	<script src="https://cdn.jsdelivr.net/riot/3.1/riot+compiler.js"></script>
 
 	<script>
@@ -32,4 +46,5 @@
 	</script>
 
 </body>
+
 </html>

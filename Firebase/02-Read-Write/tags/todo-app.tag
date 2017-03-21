@@ -24,17 +24,29 @@
 	<script>
 		var that = this;
 
-		// STATIC data that eventually will come from Firebase
-		this.fakeData = [{
-			task: "Item A",
-			done: true
-		},{
-			task: "Item B",
-			done: false
-		},{
-			task: "Item C",
-			done: false
-		}];
+		// // STATIC data that eventually will come from Firebase
+		// this.fakeData = [{
+		// 	task: "Item A",
+		// 	done: true
+		// },{
+		// 	task: "Item B",
+		// 	done: false
+		// },{
+		// 	task: "Item C",
+		// 	done: false
+		// }];
+
+		this.fakeData = [];
+
+		firebase.database().ref('todos').on('value',function(snapshot) {
+			var list = [];
+			snapshot.forEach(function(thing){
+				list.push(thing.val());
+			});
+			that.fakeData = list;
+			that.update();
+		})
+
 
 		// To understand the event object better see:
 		// http://riotjs.com/guide/#event-handlers
@@ -49,6 +61,9 @@
 
 				event.target.value = "";	// RESET INPUT
 				event.target.focus();			// FOCUS BACK ON INPUT
+
+				var key  = firebase.database().ref('todos' + key).push().key; // sets branch name and puts it there
+				firebase.database().ref('todos' + key).set(newTask); // pushes the thing to the branch that you made
 			}
 		}
 
